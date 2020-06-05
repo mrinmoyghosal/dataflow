@@ -1,0 +1,19 @@
+version: "2"
+services:
+  web:
+    build: .
+    expose:
+      - "9080"
+    ports:
+      - "9080:9080"
+    command: ["python3", "app.py"]
+    links:
+      - broker
+  broker:
+    build: .
+    command: ["python3", "/usr/src/myapp/broker.py"]
+  worker:
+    build: .
+    command: ["python3", "/usr/src/myapp/worker.py"]
+    links:
+      - broker
