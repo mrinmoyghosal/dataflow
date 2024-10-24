@@ -5,8 +5,6 @@ services:
     build: .
     expose:
       - "9080"
-    #ports:
-    #  - "9080:9080"
     command: ["python3.7", "test.py"]
     deploy:
       mode: replicated

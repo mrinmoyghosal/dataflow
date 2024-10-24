@@ -31,15 +31,12 @@ RUN cd /tmp && git clone --depth 1 --branch v4.2.5 https://github.com/zeromq/lib
 RUN cd /tmp/libzmq && make install && ldconfig
 RUN rm /tmp/* -rf
 
-#RUN apt-get install -y libzmq3-dev
 RUN python3 --version
 RUN python3.7 --version
-COPY app.py /usr/src/myapp/
 COPY test.py /usr/src/myapp/
 COPY broker.py /usr/src/myapp/
 COPY worker.py /usr/src/myapp/
 COPY mgq.cpython-37m-x86_64-linux-gnu.so /usr/src/myapp/
 WORKDIR /usr/src/myapp
-RUN pip3 install --break-system-packages flask
 RUN ls
 EXPOSE 9080
