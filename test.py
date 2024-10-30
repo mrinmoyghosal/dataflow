@@ -2,7 +2,7 @@ from mgq import MgqClient
 import datetime
 import os
 
-broker = os.getenv("BROKER_PORT")
+broker = os.getenv("BROKER_SERVICE_PORT")
 client = MgqClient(broker)
 
 startTime = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
