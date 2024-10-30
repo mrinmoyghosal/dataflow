@@ -1,7 +1,9 @@
 from mgq import MgqClient
 import datetime
+import os
 
-client = MgqClient("tcp://broker:5555")
+broker = os.getenv("BROKER_PORT")
+client = MgqClient(broker)
 
 startTime = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
 timeNow = datetime.datetime.now()
@@ -14,5 +16,5 @@ timeAfter = datetime.datetime.now()
 elapsed = timeAfter - timeNow
 endTime = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
 print('Ended at - '+ endTime)
-print('Last count - '+ lastCount)
+print('Total Msg Processed - '+ lastCount)
 print('Total time taken in (ms) - '+ str(int(elapsed.total_seconds() * 1000)))

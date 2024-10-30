@@ -15,8 +15,9 @@ spec:
     spec:
       containers:
       - name: broker
-        image: localhost:32000/dataflow:latest
-        command: ["python3.7"]
+        image: localhost:32000/dataflowx:v1
+        imagePullPolicy: Always
+        command: ["python"]
         args: ["broker.py"]
 ---
 apiVersion: apps/v1
@@ -36,8 +37,9 @@ spec:
     spec:
       containers:
       - name: worker
-        image: localhost:32000/dataflow:latest
-        command: ["python3.7"]
+        image: localhost:32000/dataflowx:v1
+        imagePullPolicy: Always
+        command: ["python3"]
         args: ["worker.py"]
 ---
 apiVersion: apps/v1
@@ -57,6 +59,7 @@ spec:
     spec:
       containers:
       - name: client
-        image: localhost:32000/dataflow:latest
-        command: ["python3.7"]
+        imagePullPolicy: Always
+        image: localhost:32000/dataflowx:v1
+        command: ["python3"]
         args: ["test.py"]
